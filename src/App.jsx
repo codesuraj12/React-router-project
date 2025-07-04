@@ -1,17 +1,11 @@
 
-
 import React from 'react'
-import Header from './components/header/Header'
-import Footer from './components/footer/Footer'
-import { Outlet } from 'react-router-dom'
+import Login from './components/Login'
+import HelpdeskSystem from './components/HelpDeskSystem'
 
 const App = () => {
   return (
-    <>
-  <Header/>
-  <Outlet/>
-  <Footer/>
-    </>
+    <HelpdeskSystem/>
   )
 }
 
