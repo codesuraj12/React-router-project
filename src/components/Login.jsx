@@ -4,10 +4,10 @@ import { useState } from 'react';
 
 
 
-const LoginForm = ({ onNavigate, formData, onInputChange }) => (
+const LoginForm = ({ onNavigate, formData, onInputChange,setIsLogin }) => (
     <div className="space-y-4">
         <div className="relative">
-            {/* <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" /> */}
+          
             <input
                 type="text"
                 placeholder="Username"
@@ -18,7 +18,7 @@ const LoginForm = ({ onNavigate, formData, onInputChange }) => (
         </div>
 
         <div className="relative">
-            {/* <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" /> */}
+      
             <input
                 type="password"
                 placeholder="Password"
@@ -46,10 +46,10 @@ const LoginForm = ({ onNavigate, formData, onInputChange }) => (
     </div>
 );
 
-const SignUpForm = ({ onNavigate, formData, onInputChange }) => (
+const SignUpForm = ({ onNavigate, formData, onInputChange,setIsLogin  }) => (
     <div className="space-y-4">
         <div className="relative">
-            {/* <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" /> */}
+         
             <input
                 type="text"
                 placeholder="Username"
@@ -60,7 +60,7 @@ const SignUpForm = ({ onNavigate, formData, onInputChange }) => (
         </div>
 
         <div className="relative">
-            {/* <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" /> */}
+           
             <input
                 type="password"
                 placeholder="Password"
@@ -71,7 +71,7 @@ const SignUpForm = ({ onNavigate, formData, onInputChange }) => (
         </div>
 
         <div className="relative">
-            {/* <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" /> */}
+            
             <input
                 type="email"
                 placeholder="Email"
@@ -107,7 +107,7 @@ const Login = ({ onNavigate, formData, onInputChange }) => {
                 <div className="text-center mb-8">
                     <h1 className="text-2xl font-bold text-gray-800 mb-2">Helpdesk System</h1>
                     {!isLogin && <p className="text-gray-600 text-sm">Create new account</p>}
-                    <div className="w-16 h-1 bg-teal-500 mx-auto rounded mt-2"></div>
+                    {/*!isLogin && <div className="w-16 h-1 bg-teal-500 mx-auto rounded mt-2"></div>  this is for underline */}
                 </div>
 
                 {isLogin ? (
