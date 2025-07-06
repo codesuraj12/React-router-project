@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 
 
-const LoginForm = ({ onNavigate, formData, onInputChange,setIsLogin }) => (
+const LoginForm = ({ onNavigate, formData, onInputChange,setIsLogin ,onLogin }) => (
     <div className="space-y-4">
         <div className="relative">
           
@@ -29,7 +29,7 @@ const LoginForm = ({ onNavigate, formData, onInputChange,setIsLogin }) => (
         </div>
 
         <button
-            onClick={() => onNavigate('dashboard')}
+            onClick={() => onLogin()}
             className="w-full bg-teal-500 text-white py-3 rounded-lg font-semibold hover:bg-teal-600 transition-colors"
         >
             Log In
@@ -99,7 +99,7 @@ const SignUpForm = ({ onNavigate, formData, onInputChange,setIsLogin  }) => (
     </div>
 );
 
-const Login = ({ onNavigate, formData, onInputChange }) => {
+const Login = ({ onNavigate, formData, onInputChange,onLogin }) => {
     const [isLogin, setIsLogin] = useState(true);
     return (
         <div className="min-h-screen bg-gradient-to-br from-teal-400 to-teal-500 flex items-center justify-center p-4">
@@ -114,7 +114,8 @@ const Login = ({ onNavigate, formData, onInputChange }) => {
                     <LoginForm onNavigate={onNavigate}
                         formData={formData}
                         onInputChange={onInputChange}
-                        setIsLogin={setIsLogin} />
+                        setIsLogin={setIsLogin}
+                         onLogin={onLogin} />
                         
                     ) : (                   
                     <SignUpForm onNavigate={onNavigate}

@@ -16,12 +16,34 @@ const HelpdeskSystem = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+   const [isAuthorized, setIsAuthorized] = useState(false);
+const handleLogin = () => {
+  const isValidUsername =
+    formData.username.length >= 5 &&
+    /^[a-zA-Z0-9]+$/.test(formData.username); // only letters and numbers
+
+  const isValidPassword = formData.password.trim() !== ''; // not empty
+
+  if (!isValidUsername) {
+    alert('Username must be at least 5 characters and contain only letters and numbers.');
+    return;
+  }
+
+  if (!isValidPassword) {
+    alert('Password cannot be empty.');
+    return;
+  }
+
+  // If all valid
+  setIsAuthorized(true);
+  setCurrentView('dashboard');
+};
   const renderCurrentView = () => {
     switch (currentView) {
       case 'login':
-        return <Login onNavigate={setCurrentView} formData={formData} onInputChange={handleInputChange} />;
+        return <Login onNavigate={setCurrentView} formData={formData} onInputChange={handleInputChange} onLogin={handleLogin}/>;
       case 'dashboard':
-        return <Dashboard onNavigate={setCurrentView} />;
+        return <Dashboard onNavigate={setCurrentView} onLogin={handleLogin}/>;
       case 'createTicket':
       case 'ticketList':
         return <Ticket onNavigate={setCurrentView} view={currentView} />;
@@ -35,6 +57,7 @@ const HelpdeskSystem = () => {
       {renderCurrentView()}
       
       {/*  Navigation */}
+      {isAuthorized &&
       <div className="fixed bottom-4 right-4 bg-white rounded-lg shadow-lg p-4 space-y-2">
         <div className="text-xs font-semibold text-gray-500 mb-2">Navigation</div>
         {[
@@ -56,6 +79,7 @@ const HelpdeskSystem = () => {
           </button>
         ))}
       </div>
+}
     </div>
   );
 };
